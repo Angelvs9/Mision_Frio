@@ -1,9 +1,27 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class pezController : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision){
-        gameObject.SetActive(false);
+    public Image fishIcon;        // Asigna el objeto de la UI FishIcon desde el Inspector
+    public Sprite pezGris;        // Asigna el sprite gris desde el Inspector
+    public Sprite pez;            // Asigna el sprite naranja desde el Inspector
+
+    void Start()
+    {
+        // Inicialmente, mostrar el pez gris
+        fishIcon.sprite = pezGris;
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Cambiar al sprite naranja cuando se recoja el pez
+            fishIcon.sprite = pez;
+
+            // Desactivar el objeto del pez
+            gameObject.SetActive(false);
+        }
+    }
 }
