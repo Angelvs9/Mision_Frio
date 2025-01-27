@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class EnemyController : MonoBehaviour
 {
     public float velocidad = 2f;
-    public float distanciaDeteccion = 10f; // Aumentamos la distancia de detección
+    public float distanciaDeteccion = 15f; // Aumentamos la distancia de detección
     public float distanciaAtaque = 1.5f; // Ajustar la distancia para comenzar el ataque
     public List<Transform> puntosPatrulla; // Lista de puntos de patrulla
 
@@ -61,6 +61,7 @@ public class EnemyController : MonoBehaviour
         else
         {
             persiguiendoJugador = false;
+            animador.SetBool("moviendo", true);
         }
     }
 
