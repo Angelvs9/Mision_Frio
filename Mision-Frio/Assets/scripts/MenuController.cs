@@ -8,4 +8,16 @@ public class MenuController : MonoBehaviour
         // Cargar la escena del juego
         SceneManager.LoadScene("escenaPrado");
     }
+    public void LoadCredits()
+    {
+        // Cargar la escena del juego
+        SceneManager.LoadScene("creditos");
+    }
+
+    public void LoadSettings()
+    {
+        // Cargar la escena del juego
+        SceneManager.LoadScene("escenaPrado");
+    }
+
 }
