@@ -9,6 +9,8 @@ public class pezController : MonoBehaviour
 
     void Start()
     {
+        AudioSource audio = GetComponent<AudioSource>();
+        if (audio == null) audio = gameObject.AddComponent<AudioSource>();
 
         if (fishIcon != null)
         {
@@ -22,7 +24,8 @@ public class pezController : MonoBehaviour
         {
             // Cambiar al sprite naranja cuando se recoja el pez
             fishIcon.sprite = pez;
-
+            GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("sonidoPez");
+            GetComponent<AudioSource>().Play();
             // Desactivar el objeto del pez
             gameObject.SetActive(false);
         }
