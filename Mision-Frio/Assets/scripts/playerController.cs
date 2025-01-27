@@ -3,6 +3,10 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
 
+    private AudioSource audioSource;  
+    public AudioClip saltoSonido;       
+    public AudioClip ataqueSonido;
+
     private bool puedeSaltar; 
     private Animator ataque;
     private int contador;
@@ -23,6 +27,8 @@ public class playerController : MonoBehaviour
           ataque=gameObject.GetComponent<Animator>();
           contador=0;
           vidaActual = vidaMaxima;
+          audioSource=GetComponent<AudioSource>();
+          audioSource.playOnAwake = false;
         
     }
 
@@ -77,6 +83,8 @@ public class playerController : MonoBehaviour
                if ((Input.GetKeyDown("up") || Input.GetKeyDown("space")) && puedeSaltar)
                {
                     puedeSaltar = false;
+                    //audioSource.pitch = Random.Range(0.8f, 1.2f);
+                    audioSource.PlayOneShot(saltoSonido);
                     gameObject.GetComponent<Animator>().SetBool("tocarsuelo", false);
                     gameObject.GetComponent<Animator>().SetBool("saltar", true);
                     gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0,fuerzaSalto)); // Ajusta este valor para controlar la fuerza del salto
@@ -128,8 +136,11 @@ public class playerController : MonoBehaviour
      }
 
      private void atacar(){
-          if(Input.GetMouseButtonDown(0))
+          if(Input.GetMouseButtonDown(0)){
                ataque.SetTrigger("atacar");
+               //audioSource.pitch = Random.Range(0.8f, 1.2f);
+               audioSource.PlayOneShot(ataqueSonido);
+          }
      }
 
 
