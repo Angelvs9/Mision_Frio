@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pezGris_0: -1473328232767727897
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

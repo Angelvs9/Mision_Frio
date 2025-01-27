@@ -9,13 +9,16 @@ public class pezController : MonoBehaviour
 
     void Start()
     {
-        // Inicialmente, mostrar el pez gris
-        fishIcon.sprite = pezGris;
+
+        if (fishIcon != null)
+        {
+            fishIcon.sprite = pezGris;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.name == "player")
         {
             // Cambiar al sprite naranja cuando se recoja el pez
             fishIcon.sprite = pez;
