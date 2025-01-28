@@ -4,7 +4,8 @@ public class playerController : MonoBehaviour
 {
 
     private AudioSource audioSource;  
-    public AudioClip saltoSonido;       
+    public AudioClip saltoSonido;
+       
     public AudioClip ataqueSonido;
 
     private bool puedeSaltar; 
@@ -28,7 +29,8 @@ public class playerController : MonoBehaviour
           contador=0;
           vidaActual = vidaMaxima;
           audioSource=GetComponent<AudioSource>();
-          audioSource.playOnAwake = false;
+          saltoSonido=Resources.Load<AudioClip>("sounds/saltoSonido");
+          ataqueSonido=Resources.Load<AudioClip>("sounds/ataqueSonido");
         
     }
 
@@ -83,7 +85,7 @@ public class playerController : MonoBehaviour
                if ((Input.GetKeyDown("up") || Input.GetKeyDown("space")) && puedeSaltar)
                {
                     puedeSaltar = false;
-                    //audioSource.pitch = Random.Range(0.8f, 1.2f);
+                    audioSource.pitch = Random.Range(0.8f, 1.2f);
                     audioSource.PlayOneShot(saltoSonido);
                     gameObject.GetComponent<Animator>().SetBool("tocarsuelo", false);
                     gameObject.GetComponent<Animator>().SetBool("saltar", true);
@@ -138,8 +140,9 @@ public class playerController : MonoBehaviour
      private void atacar(){
           if(Input.GetMouseButtonDown(0)){
                ataque.SetTrigger("atacar");
-               //audioSource.pitch = Random.Range(0.8f, 1.2f);
+               audioSource.pitch = Random.Range(0.8f, 1.2f);
                audioSource.PlayOneShot(ataqueSonido);
+               
           }
      }
 
