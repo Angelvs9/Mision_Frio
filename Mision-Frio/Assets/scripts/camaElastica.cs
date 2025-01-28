@@ -15,10 +15,10 @@ public class camaElastica : MonoBehaviour
     {
        if (collision.gameObject.CompareTag("trampolin"))
         {
-            Debug.Log("llego");
             // Aplica una fuerza hacia arriba (en el eje Y) para simular el rebote
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);  // Restablece la velocidad vertical para evitar acumulación
             rb.AddForce(Vector2.up * bounceForce);  // Aplica la fuerza de impulso
+            Debug.Log("llego");
         }
     }
 }
