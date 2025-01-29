@@ -18,7 +18,8 @@ public class playerController : MonoBehaviour
     public float fuerzaSalto=100f;
      
     public int vidaMaxima = 10;
-    private int vidaActual;
+    public int vidaActual;
+    public GameObject player;
 
     //private int danojugador=5;
 
@@ -37,8 +38,8 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-           ControlInactividad(); // Llamar al método que el baile
-
+          ControlInactividad(); // Llamar al método que el baile
+          
           // Movimiento y acciones del personaje
           if (Input.anyKey || Input.anyKeyDown)
           {

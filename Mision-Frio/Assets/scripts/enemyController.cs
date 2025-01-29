@@ -3,15 +3,17 @@ using System.Collections.Generic;
 
 public class EnemyController : MonoBehaviour
 {
-    public float velocidad = 2f;
+    public float velocidad;
     public float distanciaDeteccion = 15f; // Aumentamos la distancia de detección
     public float distanciaAtaque = 1.5f; // Ajustar la distancia para comenzar el ataque
     public List<Transform> puntosPatrulla; // Lista de puntos de patrulla
-
+    public int dano;
     private Vector2 destinoPatrulla;
     private Animator animador;
     private Transform jugador;
     private bool persiguiendoJugador;
+    public playerController playerController;
+    public GameObject objetivo;
 
     void Start()
     {
@@ -87,6 +89,10 @@ public class EnemyController : MonoBehaviour
             {
                 // Atacar al jugador
                 animador.SetTrigger("atacar");
+                playerController.vidaActual=playerController.vidaActual-dano;
+                if(playerController.vidaActual<=0){
+                    Destroy(objetivo);
+                }
                 animador.SetBool("moviendo", false); // Detener animación de caminar al atacar
             }
         }
