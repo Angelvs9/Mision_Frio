@@ -47,6 +47,7 @@ public class EnemyController : MonoBehaviour
             else
             {
                 animador.SetBool("moviendo", false);
+                transform.position = Vector2.MoveTowards(transform.position, destinoPatrulla, velocidad * Time.deltaTime);
                 GenerarNuevoDestino();
             }
         }
@@ -63,6 +64,7 @@ public class EnemyController : MonoBehaviour
         else
         {
             persiguiendoJugador = false;
+            transform.position = Vector2.MoveTowards(transform.position, destinoPatrulla, velocidad * Time.deltaTime);
             animador.SetBool("moviendo", true);
         }
     }
