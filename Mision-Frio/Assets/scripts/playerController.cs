@@ -19,7 +19,7 @@ public class playerController : MonoBehaviour
 
 
     [SerializeField] public barraVidaController barraVidaController;
-    public float vidaMaxima = 10;
+    public float vidaMaxima = 500f;
     public float vidaActual;
     public GameObject player;
 
