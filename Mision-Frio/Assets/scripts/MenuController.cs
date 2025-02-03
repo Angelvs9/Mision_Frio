@@ -26,5 +26,8 @@ public class MenuController : MonoBehaviour
         // Cargar la escena del juego
         SceneManager.LoadScene("escenaPrado");
     }
+    public void CerrarJuego(){
+        Application.Quit();
+    }
 
 }
