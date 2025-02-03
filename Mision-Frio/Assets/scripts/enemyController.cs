@@ -89,9 +89,9 @@ public class EnemyController : MonoBehaviour
             {
                 // Atacar al jugador
                 animador.SetTrigger("atacar");
-                playerController.vidaActual=playerController.vidaActual-dano;
-                if(playerController.vidaActual<=0){
-                    Destroy(objetivo);
+                if (playerController != null)
+                {
+                   playerController.RecibirDaño(dano);  // Aquí se aplica el daño al jugador
                 }
                 animador.SetBool("moviendo", false); // Detener animación de caminar al atacar
             }

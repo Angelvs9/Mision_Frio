@@ -5,7 +5,7 @@ public class playerController : MonoBehaviour
 
     private AudioSource audioSource;  
     public AudioClip saltoSonido;
-       
+    public barraVidaController barraVida;
     public AudioClip ataqueSonido;
 
     private bool puedeSaltar; 
@@ -16,9 +16,11 @@ public class playerController : MonoBehaviour
     public float velocidadMaxima=2f;
     public float peso=1f;
     public float fuerzaSalto=100f;
-     
-    public int vidaMaxima = 10;
-    public int vidaActual;
+
+
+    [SerializeField] public barraVidaController barraVidaController;
+    public float vidaMaxima = 10;
+    public float vidaActual;
     public GameObject player;
 
     //private int danojugador=5;
@@ -38,6 +40,8 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
           ControlInactividad(); // Llamar al método que el baile
           
           // Movimiento y acciones del personaje
@@ -144,6 +148,19 @@ public class playerController : MonoBehaviour
                audioSource.pitch = Random.Range(0.8f, 1.2f);
                audioSource.PlayOneShot(ataqueSonido);
                
+          }
+     }
+
+     public void RecibirDaño(float dano)
+     {
+          vidaActual-=dano;
+          cambiarBarraVida();
+          if(vidaActual<=0){ Destroy(gameObject);}
+     }
+
+     private void cambiarBarraVida(){
+          if(barraVida!=null){
+               barraVida.ActualizarBarraVida(vidaActual);
           }
      }
 
