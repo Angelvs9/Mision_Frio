@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bandera_0: 5893965511689052151
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

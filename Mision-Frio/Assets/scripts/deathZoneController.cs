@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class deathZoneController : MonoBehaviour
 {
-    public static CheckpointController instance; 
+    public CheckpointController instance2; 
     public GameObject player;
 
     
@@ -17,6 +17,6 @@ public class deathZoneController : MonoBehaviour
     
     private void PlayerDeath()
     {
-        CheckpointController.instance.RespawnPlayer(player);
+       instance2.RespawnPlayer(player);
     }
 }
