@@ -14,9 +14,12 @@ public class EnemyController : MonoBehaviour
     private bool persiguiendoJugador;
     public playerController playerController;
     public GameObject objetivo;
+    public float vidaActual;
+    public float vidaMaxima;
 
     void Start()
     {
+        vidaActual=vidaMaxima;
         animador = GetComponent<Animator>();
         GenerarNuevoDestino();
     }
@@ -120,4 +123,16 @@ public class EnemyController : MonoBehaviour
             transform.localScale = escala;
         }
     }
+    public void recibirDañoEnemigo(bool attacking,float damage){
+        vidaActual-=damage;
+        if(vidaActual<=0 && attacking==true){
+            muerte();
+        }
+
+    }
+
+    public void muerte(){
+        Destroy(gameObject);
+    }
+
 }

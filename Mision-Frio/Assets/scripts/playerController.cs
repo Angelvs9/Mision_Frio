@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerController : MonoBehaviour
 {
@@ -16,19 +17,20 @@ public class playerController : MonoBehaviour
     public float velocidadMaxima=2f;
     public float peso=1f;
     public float fuerzaSalto=100f;
-
+    public bool atacando=false;
 
     [SerializeField] public barraVidaController barraVidaController;
-    public float vidaMaxima = 500f;
+    public float vidaMaxima = 10000f;
     public float vidaActual;
     public GameObject player;
-
-    //private int danojugador=5;
+    public GameObject enemy;
+    private int danojugador=5;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
           ataque=gameObject.GetComponent<Animator>();
+
           contador=0;
           vidaActual = vidaMaxima;
           audioSource=GetComponent<AudioSource>();
@@ -141,13 +143,19 @@ public class playerController : MonoBehaviour
           }
           
      }
-
+     public void LoadMenu()
+     {
+          // Cargar la escena del juego
+          SceneManager.LoadScene("pantallaInicio");
+     }
      private void atacar(){
+          atacando=true;
           if(Input.GetMouseButtonDown(0)){
                ataque.SetTrigger("atacar");
                audioSource.pitch = Random.Range(0.8f, 1.2f);
                audioSource.PlayOneShot(ataqueSonido);
-               
+               //enemy.recibirDañoEnemigo(atacando,danojugador);
+               atacando=false;
           }
      }
 
@@ -155,7 +163,7 @@ public class playerController : MonoBehaviour
      {
           vidaActual-=dano;
           cambiarBarraVida();
-          if(vidaActual<=0){ Destroy(gameObject);}
+          if(vidaActual<=0){ LoadMenu();}
      }
 
      private void cambiarBarraVida(){
